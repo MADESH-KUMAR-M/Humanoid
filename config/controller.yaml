@@ -1,0 +1,32 @@
+
+
+# lhumerus_controllers.yaml
+
+controller_manager:
+  ros__parameters:
+    update_rate: 50  # Controller update rate in Hz
+
+# Position controller for the LHumerus joint
+LHumerus_position_controller:
+  type: "position_controllers/JointPositionController"
+  joints:
+    - J28  # The name of the joint as defined in your URDF
+  state_publish_rate: 50  # Rate at which to publish the joint state
+  command_interfaces:
+    - position
+
+LRadius_position_controller:
+  type: "position_controllers/JointPositionController"
+  joints:
+    - J29  # The name of the joint as defined in your URDF
+  state_publish_rate: 50  # Rate at which to publish the joint state
+  command_interfaces:
+    - position
+
+# Joint state broadcaster for reading joint states
+joint_state_broadcaster:
+  type: "joint_state_broadcaster/JointStateBroadcaster"
+  joints:
+    - J28
+    - J29
+
